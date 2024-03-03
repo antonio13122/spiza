@@ -26,7 +26,7 @@
         price="$1,245" 
       />
     </div>
-    <!-- Button with photo icon to navigate back to Food.vue -->
+    
     <div class="mt-4 text-center">
       <router-link to="/Food">
           <img src="@/assets/arrow.png" alt="Back to Food" style="width: 50px; height: 50px;">
@@ -42,12 +42,12 @@
   transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
   border: 0;
   border-radius: 1rem;
-  height: 100%; /* Set a fixed height for all cards */
+  height: 100%; 
 }
 
 .card-img-top {
   width: 100%;
-  height: 200px; /* Set a fixed height for the card image */
+  height: 200px; 
   object-fit: cover;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
@@ -58,7 +58,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%; /* Ensure the card body takes full height */
+  height: 100%; 
 }
 
 .card-title {

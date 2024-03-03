@@ -16,12 +16,12 @@
   .product-page {
     display: flex;
     justify-content: space-between;
-    padding: 0 3cm; /* Adjust the padding as needed */
+    padding: 0 3cm; 
   }
   
   .product-container {
-    width: calc(33.333% - 2.25cm); /* Adjust the width and margin as needed */
-    margin-right: 4.5cm; /* Adjust the margin as needed */
+    width: calc(33.333% - 2.25cm); 
+    margin-right: 4.5cm; 
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -31,7 +31,7 @@
   }
   
   .product-container:last-child {
-    margin-right: 0; /* Remove margin from last product container */
+    margin-right: 0; 
   }
   
   .product-container:hover {

@@ -2,9 +2,9 @@
   <div id="register-page">
     <div class="container">
       <div class="row justify-content-center">
-        <!-- Register Form -->
+        
         <div class="col-md-6">
-          <div class="card mt-5"> <!-- Add top margin -->
+          <div class="card mt-5"> 
             <div class="card-body">
               <h5 class="card-title text-center mb-4">Register</h5>
               <!-- Registration form -->
@@ -23,7 +23,7 @@
                 </div>
                 <button type="button"  @click="signup" class="btn btn-success btn-lg btn-block">Register</button>
               </form>
-              <p class="text-center mt-4 mb-5"> <!-- Add bottom margin -->
+              <p class="text-center mt-4 mb-5"> 
                 Already a user? <router-link to="/Login">Already part of Spiza?</router-link>
               </p>
             </div>
@@ -72,7 +72,7 @@ export default {
 <style lang="scss">
 #register-page {
   background-color: #50C878;
-  min-height: calc(100vh - 8cm); /* Subtract 3cm from top and bottom */
+  min-height: calc(100vh - 8cm); 
   display: flex;
   justify-content: center;
   align-items: flex-start;

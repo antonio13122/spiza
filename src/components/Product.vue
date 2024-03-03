@@ -58,13 +58,13 @@ export default {
   font-size: 1.25rem;
   font-weight: 500;
   margin-bottom: 1rem;
-  color: #333; /* Light black color */
+  color: #333; 
 }
 
 .price-hp {
   font-size: 1rem;
   font-weight: 600;
-  color: #333; /* Light black color */
+  color: #333; 
 }
 
 .bold-btn {
@@ -74,12 +74,12 @@ export default {
   padding: 10px 50px;
   
   background-color: transparent;
-  border: 2px solid #50C878; /* Change border color to match background */
-  color: black; /* Change text color to match product text */
+  border: 2px solid #50C878; 
+  color: black; 
 }
 
 .bold-btn:hover {
-  background-color: #50C878; /* Change background color on hover */
-  color: black; /* Change text color on hover */
+  background-color: #50C878; 
+  color: black; 
 }
 </style>

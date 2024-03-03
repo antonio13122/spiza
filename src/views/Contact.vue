@@ -35,8 +35,8 @@
   background: #F9F9F9;
   color: #50C878;
   padding: 35px;
-  width: calc(100% - 70px); /* Adjusted width */
-  margin: auto; /* Centering the form horizontally */
+  width: calc(100% - 70px); 
+  margin: auto; 
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
@@ -56,7 +56,7 @@ input[type="tel"],
 input[type="url"],
 input[type="text"],
 textarea {
-  width: calc(100% - 30px); /* Adjusted width */
+  width: calc(100% - 30px); 
   border: 2px solid #ccc;
   background: #FFF;
   margin: 0 0 10px;
@@ -77,7 +77,7 @@ textarea {
 }
 
 button[type="submit"] {
-  width: calc(100% - 30px); /* Adjusted width */
+  width: calc(100% - 30px); 
   border: none;
   background: #50C878;
   color: #FFF;

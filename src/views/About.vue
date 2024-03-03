@@ -24,28 +24,28 @@
   background-size: contain;
   background-color: #fdfdfd;
   overflow: hidden;
-  padding: 100px 20px 50px; /* Added padding at the bottom */
+  padding: 100px 20px 50px;
 }
 
 .inner-container {
   max-width: 60%;
-  margin: 0 auto; /* Center the inner container */
-  margin-left: calc(50% - 35vw); /* Move 3.5cm to the left */
+  margin: 0 auto; 
+  margin-left: calc(50% - 35vw); 
 }
 
 .inner-container h1 {
   margin-bottom: 30px;
-  font-size: 36px; /* Reduced font size */
+  font-size: 36px; 
   font-weight: 900;
 }
 
 .text {
-  font-size: 18px; /* Reduced font size */
+  font-size: 18px; 
   color: #545454;
   line-height: 40px;
-  text-align: center; /* Center the text */
-  margin-bottom: 20px; /* Reduced margin bottom */
-  padding-right: 20px; /* Added padding right */
+  text-align: center; 
+  margin-bottom: 20px; 
+  padding-right: 20px; 
 }
 
 .skills {
@@ -57,21 +57,21 @@
 
 .action-text {
   font-size: 46px;
-  color: #545454; /* Same color as paragraph */
+  color: #545454; 
   text-decoration: none;
-  cursor: pointer; /* Change cursor to pointer on hover */
-  display: block; /* Ensure the text is displayed as a block element */
-  text-align: center; /* Center the text horizontally */
-  margin: 0 auto; /* Center the text horizontally */
+  cursor: pointer; 
+  display: block; 
+  text-align: center; 
+  margin: 0 auto; 
 }
 
 .action-text .green-text {
-  color: #545454; /* Green color */
-  transition: color 0.3s; /* Smooth transition for color change */
-  cursor: pointer; /* Change cursor to pointer on hover */
+  color: #545454; 
+  transition: color 0.3s; 
+  cursor: pointer; 
 }
 
 .action-text .green-text:hover {
-  color: #50C878; /* Change color on hover */
+  color: #50C878; 
 }
 </style>

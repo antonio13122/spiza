@@ -1,21 +1,21 @@
 <template>
     <div class="admin-container">
-      <!-- Product Name Form -->
+      <!-- ime produkta -->
       <div class="form-container">
         <label for="productName" style="color: lightgray;">Enter your meal name</label>
         <input type="text" id="productName" v-model="productName" class="form-control" placeholder="Enter your meal name">
       </div>
-      <!-- Product Description Form -->
+      <!-- opis -->
       <div class="form-container">
         <label for="productDescription" style="color: lightgray;">Describe what meal are you offering today</label>
         <textarea id="productDescription" v-model="productDescription" class="form-control" placeholder="Describe what meal are you offering today"></textarea>
       </div>
-      <!-- Product Price Form -->
+      <!--  cijena -->
       <div class="form-container">
         <label for="productPrice" style="color: lightgray;">Enter the price:</label>
         <textarea id="productPrice" v-model="productPrice" class="form-control" placeholder="Remember! It is not about how much you earn, it is about helping others"></textarea>
       </div>
-      <!-- Drag and drop area for image upload -->
+      <!-- drag and drop -->
       <div class="upload-container">
         <input type="file" @change="handleFileUpload" accept="image/*" ref="fileInput" style="display: none">
         <div
@@ -27,7 +27,7 @@
           <img src="@/assets/draganddrop.png" alt="Drag and drop icon" class="drag-drop-icon">
           <p>Drag & Drop or Click to Upload Image</p>
         </div>
-        <!-- Share your meal button -->
+        
         <button class="share-button">Share your meal</button>
       </div>
     </div>
@@ -58,7 +58,7 @@
         }
       },
       openFileInput() {
-        this.$refs.fileInput.click(); // Ensure that fileInput is defined before accessing click method
+        this.$refs.fileInput.click(); 
       }
     }
   };
@@ -70,13 +70,13 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    height: calc(100vh - 12cm); /* Subtracting 6cm for the height of containers */
-    padding: 0 5cm; /* Adding 5cm padding on both sides */
+    height: calc(100vh - 12cm); 
+    padding: 0 5cm; 
   }
   
   .form-container, .upload-container {
     width: 100%;
-    height: calc(100% + 3cm); /* Adjusting height of containers */
+    height: calc(100% + 3cm); 
     margin-bottom: 30px;
   }
   

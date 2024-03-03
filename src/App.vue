@@ -6,9 +6,11 @@
           <img src="@/assets/logo.png" alt="logo" class="logo">
         </router-link>
         <div class="nav-links">
-          <router-link to="/About" class="navLink">About</router-link>
+         
           <router-link to="/Food" class="navLink">Food</router-link>
           <router-link to="/Contact" class="navLink">Contact</router-link>
+          <router-link to="/About" class="navLink">About</router-link>
+          <router-link to="/Recipes" class="navLink">Recipes</router-link>
         </div>
         <div class="nav-icons"> 
           <router-link v-if="!store.currentUser" to="/Register" class="login-btn">

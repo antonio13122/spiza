@@ -77,10 +77,10 @@
   <style lang="scss">
   #login-page {
     background-color: #50C878;
-    min-height:  calc(100vh - 8cm); /* Subtract 3cm from top and bottom */; /* Use min-height instead of height */
+    min-height:  calc(100vh - 8cm); 
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align items to start */
+    align-items: flex-start; 
     font-family: 'Poppins', sans-serif;
   }
   
@@ -97,7 +97,7 @@
   .card-body {
     background-color: #fff;
     border-radius: 15px;
-    padding: 30px; /* Increase padding */
+    padding: 30px; 
   }
   
   .form-label {

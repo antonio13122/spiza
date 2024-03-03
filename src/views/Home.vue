@@ -93,7 +93,7 @@ body {
 }
 
 .router-link-exact-active:hover {
-  text-decoration: none; /* Remove underline on hover */
+  text-decoration: none; 
 }
 
 .container {
@@ -102,21 +102,17 @@ body {
   overflow: hidden;
   padding: 4rem 1rem;
   display: flex;
-  justify-content: center; /* Center the items horizontally */
+  justify-content: center; 
 }
 
 .photo-container {
-  margin-right: 9cm; /* Set distance between icons */
-}
-
-.photo-container:last-child {
-  margin-right: 0; /* Remove margin from the last photo container */
+  margin-right: 9cm; 
 }
 
 .service-image {
-  width: 200px; /* Set a fixed width for the images */
-  height: 200px; /* Set a fixed height for the images */
-  object-fit: cover; /* Ensure the entire image fits within the container */
+  width: 200px; 
+  height: 200px; 
+  object-fit: cover; 
 }
 
 .slider {
@@ -128,8 +124,8 @@ body {
 }
 
 .slider img {
-  width: 50px; /* Set the width of the arrow image */
-  height: 50px; /* Set the height of the arrow image */
+  width: 50px; 
+  height: 50px; 
 }
 
 </style>
