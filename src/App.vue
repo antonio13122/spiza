@@ -46,7 +46,7 @@ firebase.auth().onAuthStateChanged(user => {
     console.log("emailVerified:" + user.emailVerified);
 
     if (!currentRoute.meta.requiredUser && user.emailVerified) {
-      this.$router.push({ name: "Home" });
+      this.$router.push({ name: "Admin" });
     }
 
     if (user.displayName) {

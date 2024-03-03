@@ -11,10 +11,8 @@ const routes = [
   {
     path: '/Home',
     name: 'Home',
-    component: Home,
-    meta: {
-      requiredUser: true,
-    },
+    component: Home
+    
   },
   {
     path: '/Register',

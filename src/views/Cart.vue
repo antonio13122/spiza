@@ -96,7 +96,7 @@
     display: inline-block;
     width: 2em;
     height: 2em;
-    background: #12543A3;
+    background: #12543A;
     color: #fff;
     text-align: center;
     line-height: 2em;
