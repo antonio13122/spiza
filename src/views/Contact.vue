@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form id="contact" @submit="submitForm">
+    <form id="contact" @submit.prevent="submitForm">
       <h3 class="contact-heading">Contact us</h3>
       <fieldset>
         <input placeholder="Your name" type="text" v-model="name" required>
@@ -132,13 +132,13 @@ button:active {
     },
     methods: {
       submitForm(){
-        let userMessages ={
+        let userMessages2 ={
           name : this.name,
           email : this.email,
           phone: this.phone,
           message: this.message
         }
-        db.collection('userMessages').add(userMessages)
+        db.collection('userMessages2').add(userMessages2)
       }
     }
 
