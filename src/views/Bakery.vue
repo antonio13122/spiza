@@ -1,39 +1,57 @@
 <template>
   <div class="container-fluid bg-transparent my-4 p-3" style="position: relative">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
-      <!-- First product -->
-      <Product 
-        imageSrc="https://m.media-amazon.com/images/I/81gK08T6tYL._AC_SL1500_.jpg" 
-        title="ASUS TUF FX505DT Gaming Laptop" 
-        price="$1,245" 
-      />
-      <!-- Second product -->
-      <Product 
-        imageSrc="https://m.media-amazon.com/images/I/81gK08T6tYL._AC_SL1500_.jpg" 
-        title="ASUS TUF FX505DT Gaming Laptop" 
-        price="$1,245" 
-      />
-      <!-- Third product -->
-      <Product 
-        imageSrc="https://m.media-amazon.com/images/I/81gK08T6tYL._AC_SL1500_.jpg" 
-        title="ASUS TUF FX505DT Gaming Laptop" 
-        price="$1,245" 
-      />
-      <!-- Fourth product -->
-      <Product 
-        imageSrc="https://m.media-amazon.com/images/I/81gK08T6tYL._AC_SL1500_.jpg" 
-        title="ASUS TUF FX505DT Gaming Laptop" 
-        price="$1,245" 
-      />
+      <!-- renderiranje produkta -->
+      <Product v-for="(product, index) in products" :key="index"
+               :imageSrc="product.imageUrl" :title="product.productName" 
+               :price="product.productPrice" />
     </div>
     
     <div class="mt-4 text-center">
       <router-link to="/Food">
-          <img src="@/assets/arrow.png" alt="Back to Food" style="width: 50px; height: 50px;">
+        <img src="@/assets/arrow.png" alt="Back to Food" style="width: 50px; height: 50px;">
       </router-link>
     </div>
   </div>
 </template>
+
+<script>
+import { db } from '@/firebase'; 
+import Product from '@/components/Product.vue';
+
+export default {
+  name: 'Bakery',
+  components: {
+    Product,
+  },
+  data() {
+    return {
+      products: [], // polje za spremanje produkta
+    };
+  },
+  methods: {
+    fetchProducts() {
+      // dohvat produkata
+      db.collection('bakeryProducts').get()
+        .then(snapshot => {
+          // za reset da se ne duplira
+          this.products = [];
+          snapshot.forEach(doc => {
+            // psuhing products
+            this.products.push(doc.data());
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching products: ', error);
+        });
+    },
+  },
+  created() {
+    // kad se kreira,fetchaj
+    this.fetchProducts();
+  },
+};
+</script>
 
 <style scoped>
 .card {
@@ -89,13 +107,3 @@
   color: black;
 }
 </style>
-
-<script>
-import Product from '@/components/Product.vue';
-export default {
-  name: 'home',
-  components: {
-    Product,
-  },
-};
-</script>

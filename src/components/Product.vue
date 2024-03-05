@@ -4,7 +4,12 @@
       <img :src="imageSrc" class="card-img-top" :alt="title">
       <div class="card-body">
         <h5 class="card-title">{{ title }}</h5>
-        <p class="price-hp">{{ price }}</p>
+        <p class="card-description">{{ description }}</p>
+        <p class="price-hp">{{ price }} €</p>
+        <div class="quantity">
+          <input type="number" v-model="quantity" min="1" max="10" class="form-control" />
+          
+        </div>
         <div class="d-grid gap-2 my-4">
           <a href="#" class="btn btn-warning bold-btn">Add to Cart</a>
         </div>
@@ -25,11 +30,32 @@ export default {
       type: String,
       required: true,
     },
+    description: {
+      type: String,
+      required: true,
+    },
     price: {
       type: String,
       required: true,
     },
   },
+  data() {
+    return {
+      quantity: 1
+    }
+  },
+  methods: {
+    incrementQuantity() {
+      if (this.quantity < 10) {
+        this.quantity++;
+      }
+    },
+    decrementQuantity() {
+      if (this.quantity > 1) {
+        this.quantity--;
+      }
+    }
+  }
 };
 </script>
 
@@ -61,6 +87,12 @@ export default {
   color: #333; 
 }
 
+.card-description {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #555; 
+}
+
 .price-hp {
   font-size: 1rem;
   font-weight: 600;
@@ -82,4 +114,17 @@ export default {
   background-color: #50C878; 
   color: black; 
 }
+
+.quantity {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.quantity input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+
 </style>

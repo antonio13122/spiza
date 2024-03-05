@@ -1,6 +1,6 @@
 <template>
   <div class="admin-container">
-    <!-- Form for entering product details -->
+    
     <form id="Products" @submit.prevent="submitForm2">
       <div class="form-container">
         <label for="productName" style="color: lightgray;">Enter your meal name</label>
@@ -14,7 +14,7 @@
         <label for="productPrice" style="color: lightgray;">Enter the price:</label>
         <input type="number" id="productPrice" v-model="productPrice" class="form-control" placeholder="Enter the price">
       </div>
-      <!-- Dropdown menu for selecting category -->
+      <!-- Dropdown menu za kategoriju -->
       <div class="form-container">
         <label for="productCategory" style="color: lightgray;">Select the category:</label>
         <select id="productCategory" v-model="productCategory" class="form-control">
@@ -23,11 +23,11 @@
           <option value="Market">Market</option>
         </select>
       </div>
-      <!-- Button to submit the product details -->
+      <!-- potvrdi detalje -->
       <button class="share-button" type="submit" >Share your meal</button>
     </form>
 
-    <!-- Separate form for uploading image -->
+    <!-- image upload -->
     <div class="upload-container">
       <input type="file" @change="handleFileUpload" accept="image/*" ref="fileInput" style="display: none">
       <div class="drag-drop-area"
@@ -37,15 +37,14 @@
         <img src="@/assets/draganddrop.png" alt="Drag and drop icon" class="drag-drop-icon">
         <p>Drag & Drop or Click to Upload Image</p>
       </div>
-      <!-- Button to upload the photo -->
+      <!-- uploadanje photo -->
       <button class="share-button" @click="uploadPhoto">Upload Photo</button>
     </div>
   </div>
 </template>
 
-
 <script>
-import { db,storage } from '@/firebase'; // Import Firebase storage instance
+import { db, storage } from '@/firebase'; 
 
 export default {
   data() {
@@ -54,7 +53,7 @@ export default {
       productDescription: '',
       productPrice: '',
       productCategory: '',
-      imageUrl: '' // To store the uploaded image URL
+      imageUrl: '' //spremi url slike
     };
   },
   methods: {
@@ -75,19 +74,22 @@ export default {
       this.$refs.fileInput.click();
     },
     uploadPhoto() {
-      // Ensure an image is selected
+      
       if (this.imageUrl) {
-        // Upload image to Firebase Storage
+        
         const storageRef = storage.ref();
         const fileRef = storageRef.child(this.imageUrl.name);
         
         fileRef.put(this.imageUrl).then(() => {
-          // Get the URL of the uploaded image
+          // dohvati url
           fileRef.getDownloadURL().then(url => {
             console.log('Image uploaded successfully');
-            // Reset the file input field after successful upload
+            // reset inputa
             this.$refs.fileInput.value = '';
             this.imageUrl = ''; // Reset the image URL
+            
+            // check
+            this.submitForm(url);
           }).catch(error => {
             console.error('Error getting download URL: ', error);
           });
@@ -98,16 +100,48 @@ export default {
         console.error('No image selected.');
       }
     },
-    submitForm2() {
-      let productDetails2 ={
-          productName : this.productName,
-          productDescription : this.productDescription, 
-          productPrice : this.productPrice,
-          productCategory : this.productCategory
-        }
-        db.collection('productDetails2').add(productDetails2)
+    submitForm(imageUrl) {
+      // ovisno o kategoriji spremi u collection
+      let collectionName = '';
+      switch (this.productCategory) {
+        case 'Restauraunt':
+          collectionName = 'restaurantProducts';
+          break;
+        case 'Bakery':
+          collectionName = 'bakeryProducts';
+          break;
+        case 'Market':
+          collectionName = 'marketProducts';
+          break;
+        default:
+          console.error('Invalid category');
+          return;
       }
-    
+      
+      
+      let productDetails = {
+        productName: this.productName,
+        productDescription: this.productDescription, 
+        productPrice: this.productPrice,
+        imageUrl: imageUrl
+      };
+
+      // dodaj u kolekciju
+      db.collection(collectionName).add(productDetails)
+        .then(() => {
+          console.log('Product added successfully');
+          // reset forme
+          this.productName = '';
+          this.productDescription = '';
+          this.productPrice = '';
+          this.productCategory = '';
+          this.imageUrl = ''; // za resetiranje
+          this.$refs.fileInput.value = ''; // -||-
+        })
+        .catch(error => {
+          console.error('Error adding product: ', error);
+        });
+    }
   }
 };
 </script>

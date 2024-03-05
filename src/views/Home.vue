@@ -81,7 +81,7 @@ body {
 }
 
 .title {
-  font-size: 1.05rem;
+  font-size: 1.6rem;
   margin-top: 37rem;
 }
 
@@ -106,7 +106,8 @@ body {
 }
 
 .photo-container {
-  margin-right: 9cm; 
+  margin-right: 5cm;
+  margin-left:5cm; 
 }
 
 .service-image {

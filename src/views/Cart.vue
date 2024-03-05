@@ -1,41 +1,76 @@
 <template>
-    <div class="container-fluid">
-      <div class="heading">
-        <h1>Shopping Cart</h1>
-        <a href="#" class="visibility-cart">X</a>    
-      </div>
-      <div class="cart">
-        <div class="table">
-          <div class="row th">
-            <div class="col col-pro">Product</div>
-            <div class="col col-price">Price</div>
-            <div class="col col-qty">QTY</div>
-            <div class="col">VAT</div>
-            <div class="col">Total</div>
-          </div>
-          <div class="row">
-            <div class="col col-pro">
-              <img src="http://static.ddmcdn.com/gif/10-kitten-cuteness-1.jpg" alt="kitten">
-              <p>Happy Little Critter</p>
-            </div>
-            <div class="col col-price">£59.99</div>
-            <div class="col col-qty">
-              <a href="#" class="qty qty-minus">-</a>
-              <input type="numeric" value="3">
-              <a href="#" class="qty qty-plus">+</a>
-            </div>
-            <div class="col col-vat">£2.95</div>
-            <div class="col col-total">£182.95</div>
-          </div>
-          <!-- Repeat the above row for each item -->
-        </div>
-        <a href="#" class="btn-update">Update cart</a>
-      </div>
+  <div class="container-fluid">
+    <div class="heading">
+      <h1>Shopping Cart</h1>
+      <a href="#" class="visibility-cart">X</a>    
     </div>
-  </template>
-  
-  <style>
-  html {
+    <div class="cart">
+      <div class="table">
+        <div class="row th">
+          <div class="col col-pro">Product</div>
+          <div class="col col-price">Price</div>
+          <div class="col col-qty">QTY</div>
+          <div class="col">VAT</div>
+          <div class="col">Total</div>
+        </div>
+        <div class="row" v-for="(item, index) in items" :key="index">
+          <div class="col col-pro">
+            <img :src="item.imageSrc" :alt="item.title">
+            <p>{{ item.title }}</p>
+          </div>
+          <div class="col col-price">{{ item.price }} €</div>
+          <div class="col col-qty">
+            <a href="#" class="qty qty-minus" @click="updateQuantity(item, false)">-</a>
+            <input type="numeric" v-model.number="item.quantity">
+            <a href="#" class="qty qty-plus" @click="updateQuantity(item, true)">+</a>
+          </div>
+          <div class="col col-vat">{{ item.vat }} €</div>
+          <div class="col col-total">{{ updatePrice(item) }} €</div>
+        </div>
+        <!-- Repeat the above row for each item -->
+      </div>
+      <a href="#" class="btn-update">Update cart</a>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ShoppingCart',
+  props: {
+    items: {
+      type: Array,
+      required: true
+    }
+  },
+  computed: {
+    total() {
+      return this.items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    },
+    totalVat() {
+      return this.items.reduce((acc, item) => acc + (item.vat * item.quantity), 0);
+    },
+    grandTotal() {
+      return this.total + this.totalVat;
+    }
+  },
+  methods: {
+    updateQuantity(item, increment) {
+      if (increment) {
+        item.quantity++;
+      } else {
+        item.quantity = Math.max(0, item.quantity - 1);
+      }
+    },
+    updatePrice(item) {
+      return (item.price * item.quantity) + (item.vat * item.quantity);
+    }
+  }
+};
+</script>
+
+<style>
+html {
     font-size: 62.5%;
   }
   
@@ -129,43 +164,4 @@
     text-decoration: none;
     color: #fff;
   }
-  </style>
-  
-<script>
-  export default {
-    name: 'ShoppingCart',
-    data() {
-      return {
-        items: [
-          { name: 'Happy Little Critter', price: 59.99, quantity: 3, vat: 2.95, imgSrc: 'http://static.ddmcdn.com/gif/10-kitten-cuteness-1.jpg' },
-          { name: 'Scared Little Kittie', price: 23.99, quantity: 1, vat: 1.95, imgSrc: 'http://lovemeow.com/wp-content/uploads/2012/05/kitten81.jpg' },
-          { name: 'Curious Little Begger', price: 59.99, quantity: 3, vat: 2.95, imgSrc: 'http://cdn.cutestpaw.com/wp-content/uploads/2012/04/l-my-first-kitten.jpg' }
-        ]
-      };
-    },
-    computed: {
-      total() {
-        return this.items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-      },
-      totalVat() {
-        return this.items.reduce((acc, item) => acc + (item.vat * item.quantity), 0);
-      },
-      grandTotal() {
-        return this.total + this.totalVat;
-      }
-    },
-    methods: {
-      updateQuantity(item, increment) {
-        if (increment) {
-          item.quantity++;
-        } else {
-          item.quantity = Math.max(0, item.quantity - 1);
-        }
-      },
-      updatePrice(item) {
-        return (item.price * item.quantity) + (item.vat * item.quantity);
-      }
-    }
-  };
-</script>
-  
+</style>
