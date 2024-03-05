@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid bg-transparent my-4 p-3" style="position: relative">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
-      <!-- Render products dynamically -->
+      
       <Product v-for="(product, index) in products" :key="index"
                :imageSrc="product.imageUrl" :title="product.productName" 
                :description="product.productDescription" :price="product.productPrice" />
     </div>
-    <!-- Button with photo icon to navigate back to Food.vue -->
+    
     <div class="mt-4 text-center">
       <router-link to="/Food">
         <img src="@/assets/arrow.png" alt="Back to Food" style="width: 50px; height: 50px;">
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { db } from '@/firebase'; // Import Firebase database instance
+import { db } from '@/firebase'; 
 import Product from '@/components/Product.vue';
 
 export default {
@@ -26,18 +26,18 @@ export default {
   },
   data() {
     return {
-      products: [], // Array to store fetched products
+      products: [], 
     };
   },
   methods: {
     fetchProducts() {
-      // Fetch products from Firestore "marketProducts" collection
+      // uzmi sa firebasea
       db.collection('marketProducts').get()
         .then(snapshot => {
-          // Reset products array to avoid duplication
+          // reset
           this.products = [];
           snapshot.forEach(doc => {
-            // Push each product to the products array
+            // push
             this.products.push(doc.data());
           });
         })
@@ -47,7 +47,7 @@ export default {
     },
   },
   created() {
-    // Call fetchProducts method when the component is created
+    // pozovoi kad se kreira komponenta
     this.fetchProducts();
   },
 };
