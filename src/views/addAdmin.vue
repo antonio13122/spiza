@@ -40,6 +40,10 @@
       <!-- uploadanje photo -->
       <button class="share-button" @click="uploadPhoto">Upload Photo</button>
     </div>
+    <button class="transition-button" @click="transitionEffect">
+      <img src="@/assets/swipe2.png" alt="Remove Admin Page" class="transition-image">
+    </button>
+    <p class = "remove-text">Made a mistake? Remove the meal.</p>
   </div>
 </template>
 
@@ -141,7 +145,16 @@ export default {
         .catch(error => {
           console.error('Error adding product: ', error);
         });
-    }
+    },
+    transitionEffect() {
+  const transitionElement = document.querySelector('.admin-container');
+  transitionElement.classList.add('slide-out-right');
+  console.log('Transition effect triggered');
+  setTimeout(() => {
+    this.$router.push('/removeAdmin');
+  }, 500); // adjusting
+}
+
   }
 };
 </script>
@@ -158,16 +171,22 @@ export default {
 }
 
 .form-container {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.share-button:hover {
+  background-color: #12543A;
+  color: white;
 }
 
 .drag-drop-area {
   border: 2px dashed #ccc;
   border-radius: 10px;
-  padding: 5px;
+  padding: 10px;
   text-align: center;
   cursor: pointer;
   margin-bottom: 20px;
+  margin-top:-14px;
 }
 
 .drag-drop-icon {
@@ -177,7 +196,8 @@ export default {
 }
 
 .share-button {
-  margin-top: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding: 10px 20px;
   background-color: white;
   color: #50C878;
@@ -188,8 +208,35 @@ export default {
   font-weight: bold;
   display: inline-block;
 }
-
+.transition-button {
+  margin-top: 10px;
+  margin-bottom: -30px;
+  padding: 10px 20px;
+  background-color: #50C878;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none; 
+  display: inline-block;
+}
 .upload-container {
-  margin-top: 40px;
+  margin-top: 35px;
+}
+
+
+.slide-out-right {
+  animation-name: slideOutRight;
+  animation-duration:0.5s;
+  animation-timing-function: ease-out;
+}
+@keyframes slideOutRight{
+  0% {
+    transform: translateX(0);
+  }
+  100%{
+    transform:translateX(-100%);
+  }
 }
 </style>
