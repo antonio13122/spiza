@@ -6,7 +6,10 @@ import Bakery from '../views/Bakery.vue';
 import Market from '../views/Market.vue';
 import Recipes from '../views/Recipes.vue';
 import Admin from '../views/Admin.vue'; 
+import addAdmin from '../views/addAdmin.vue';
+import removeAdmin from '../views/removeAdmin.vue'
 import store from "@/store";
+
 
 const routes = [
   {
@@ -70,6 +73,16 @@ const routes = [
     path: '/Recipes',
     name: 'Recipes',
     component: Recipes
+  },
+  {
+    path: '/addAdmin',
+    name: 'addAdmin',
+    component: addAdmin
+  },
+  {
+    path: '/removeAdmin',
+    name: 'removeAdmin',
+    component: removeAdmin
   },
 ];
 
