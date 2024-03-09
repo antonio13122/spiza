@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <div v-if="!submitted">
     <form id="contact" @submit.prevent="submitForm">
       <h3 class="contact-heading">Contact us</h3>
       <fieldset>
@@ -19,6 +20,13 @@
       </fieldset>
     </form>
   </div>
+  <div v-else>
+    <h3>Thank you for your message!</h3>
+    <p>We are happy that you want to become part of Spiza</p>
+    </div>
+  </div>
+
+  
 </template>
 
   
@@ -126,7 +134,8 @@ button:active {
         name: '',
         email:'',
         phone:'',
-        message:''
+        message:'',
+        submitted: false //da se vidi ko je submitted
       }
       
     },
@@ -139,6 +148,13 @@ button:active {
           message: this.message
         }
         db.collection('userMessages2').add(userMessages2)
+      .then(() => {
+        this.submitted = true;
+
+      })
+      .catch(error=>{
+        console.error("Error when submiting",error);
+      });  //s then/catch radi, možemo da se funnkcija izvede tek kada se uspješno uploada
       }
     }
 
