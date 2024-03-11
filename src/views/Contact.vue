@@ -43,7 +43,7 @@
   background: #F9F9F9;
   color: #50C878;
   padding: 35px;
-  width: calc(100% - 70px); 
+  width: 700px; 
   margin: auto; 
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
