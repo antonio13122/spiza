@@ -11,8 +11,7 @@
           
         </div>
         <div class="d-grid gap-2 my-4">
-          <a href="#" class="btn btn-warning bold-btn">Add to Cart</a>
-        </div>
+          <button @click="addToCart" class="btn btn-warning bold-btn">Add to Cart</button>        </div>
       </div>
     </div>
   </div>
@@ -44,7 +43,17 @@ export default {
       quantity: 1
     }
   },
-  methods: {
+  methods:{
+    addToCart(){
+      const product = {
+        title:this.title,
+        imageSrc: this.imageSrc,
+        description: this.description,
+        price: this.price,
+        quantity : this.quantity
+      };
+      this.$emit('add-to-cart', product);
+    },
     incrementQuantity() {
       if (this.quantity < 10) {
         this.quantity++;

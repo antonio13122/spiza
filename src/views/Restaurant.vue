@@ -4,8 +4,10 @@
       
       <Product v-for="(product, index) in products" :key="index"
                :imageSrc="product.imageUrl" :title="product.productName" 
-               :price="product.productPrice" />
-    </div>
+               :price="product.productPrice" :description = "product.description"
+               @add-to-cart="addToCart(product)" :cart="cart"/>
+               
+              </div>
     
     <div class="mt-4 text-center">
       <router-link to="/Food">
@@ -17,6 +19,8 @@
 
 <script>
 import { db } from '@/firebase'; 
+import { mapActions,mapState } from 'vuex'; // Import mapActions from Vuex
+import { storage } from '@/firebase'; 
 import Product from '@/components/Product.vue';
 
 export default {
@@ -29,15 +33,20 @@ export default {
       products: [], 
     };
   },
+  computed: {
+    ...mapState(['cart']), // Map Vuex cart state to component computed property
+  },
   methods: {
+    ...mapActions(['addToCart']),
+    addToCart(product) {
+     // this.cart.push(product); // Add product to cart locally
+      this.$store.dispatch('addToCart', product); // Dispatch addToCart action to Vuex store
+    },
     fetchProducts() {
-      
       db.collection('restaurantProducts').get()
         .then(snapshot => {
-          
           this.products = [];
           snapshot.forEach(doc => {
-            
             this.products.push(doc.data());
           });
         })
@@ -47,11 +56,11 @@ export default {
     },
   },
   created() {
-    
     this.fetchProducts();
   },
 };
 </script>
+
 
 <style scoped>
 .card {
