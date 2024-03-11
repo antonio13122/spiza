@@ -13,8 +13,8 @@ import store from "@/store";
 
 const routes = [
   {
-    path: '/Home',
-    name: 'Home',
+    path: '/',
+    name: '/',
     component: Home
     
   },
