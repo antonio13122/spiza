@@ -35,8 +35,8 @@
   
 </p>
 
-![screenshot](https://gifyu.com/image/SUc0s)
-![screenshot](https://gifyu.com/image/SUc0x)
+![SUc0s.gif](https://s9.gifyu.com/images/SUc0s.gif)
+![SUc0x.gif](https://s9.gifyu.com/images/SUc0x.gif)
 ## Project from Software engineering course
 [Faculty of Computer Science in Pula](#link)  
 Course: [Software Engineering](#link)  
