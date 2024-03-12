@@ -121,7 +121,7 @@ $ git clone https://github.com/antonio13122/spiza
 
 ## Prototypes and diagrams
 Prototype made in Figma ( to be added )
-[![Figma Badge](https://img.shields.io/badge/Figma-Prototype-1c73b7?logo=figma&style=flat-square)](#) [Figma web app prototype](https://www.figma.com/)
+[![Figma Badge](https://img.shields.io/badge/Figma-Prototype-1c73b7?logo=figma&style=flat-square)](#) [Figma web app prototype](https://www.figma.com/file/8By6YhRcAxwvGsVTrBUSrC/Untitled?type=design&node-id=4-1012&mode=design)
 
 Use Case Diagram:
 
