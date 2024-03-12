@@ -8,6 +8,8 @@ import Recipes from '../views/Recipes.vue';
 import Admin from '../views/Admin.vue'; 
 import addAdmin from '../views/addAdmin.vue';
 import removeAdmin from '../views/removeAdmin.vue'
+import Checkout from '../views/Checkout.vue'; 
+
 import store from "@/store";
 
 
@@ -83,6 +85,11 @@ const routes = [
     path: '/removeAdmin',
     name: 'removeAdmin',
     component: removeAdmin
+  },
+  {
+    path: '/Checkout',
+    name: 'Checkout',
+    component: Checkout
   },
 ];
 
