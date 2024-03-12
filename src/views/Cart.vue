@@ -15,25 +15,25 @@
                         <div class="table-responsive">
                             <table class="table shoping-cart-table">
                                 <tbody>
-                                    <tr v-for="(item,index) in cartItems" :key="index">
-                                        <td width="90">
-                                            <div class="cart-product-imitation"></div>
-                                        </td>
-                                        <td class="desc">
-                                            <h3>
-                                                <a href="#" class="text-navy">{{item.title}}</a>
-                                            </h3>
-                                            <div class="m-t-sm">
-                                                |
-                                                <a href="#" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
-                                            </div>
-                                        </td>
-                                        <td>{{ item.price }}</td>
-                                        <td width="65">
-                                            <input type="text" class="form-control" placeholder="1">
-                                        </td>
-                                        <td><h4>{{item.price}}</h4></td>
-                                    </tr>
+                                  <tr v-for="(item, index) in cartItems" :key="index">
+                      <td width="90">
+                        <img :src="item.imageUrl" class="cart-product-img" :alt="item.title">
+                      </td>
+                      <td class="desc">
+                        <h3>
+                          <a href="#" class="text-navy">{{ item.title }}</a>
+                        </h3>
+                        <div class="m-t-sm">
+                          |
+                          <a href="#" class="text-muted" @click="removeItem(index)"><i class="fa fa-trash"></i> Remove item</a>
+                        </div>
+                      </td>
+                      <td>{{ item.price }}</td>
+                      <td width="65">
+                        <input type="text" class="form-control" v-model="item.quantity" placeholder="1">
+                      </td>
+                      <td><h4>{{ item.price * item.quantity }}</h4></td>
+                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -45,7 +45,7 @@
             </div>
             
             <div class="ibox-content">
-    <router-link to="/food" class="btn btn-primary pull-right"><i class="fa fa-shopping-cart"></i> Checkout</router-link>
+    <router-link to="/Checkout" class="btn btn-primary pull-right"><i class="fa fa-shopping-cart"></i> Checkout</router-link>
     <router-link to="/Food" class="btn btn-white"><i class="fa fa-arrow-left"></i> Continue shopping</router-link>
 </div>
 
@@ -63,25 +63,24 @@ import Product from '@/components/Product.vue';
 import { storage } from '@/firebase'; 
 import { mapState,mapActions } from 'vuex';
 
- export default{
+export default {
   computed: {
     ...mapState(['cartItems']),
-    total(){
-      return this.cartItems.reduce((total,item)=>total + (item.price * item.quantity),0);
-    } // Map Vuex cartItems state to component computed property
+    total() {
+      return this.cartItems.reduce((total, item) => total + (item.price * parseFloat(item.quantity || 0)), 0);
+    }
   },
   methods: {
-    ...mapActions(['addToCart']), // Map addToCart action from Vuex store to component methods
-  },
-  created() {
-   
-  },
-  
+    ...mapActions(['addToCart', 'removeFromCart']), // Ensure 'removeFromCart' is included here
+    removeItem(index) {
+      this.removeFromCart(index);
+    }
+  }
 };
-
+</script>
  
 
-</script>
+
 
 <style scoped>
 
@@ -101,6 +100,10 @@ h3 {
   height: 80px;
   width: 80px;
   background-color: #f8f8f9;
+}
+.cart-product-img {
+  width: 80px;
+  height: auto;
 }
 .product-imitation.xl {
   padding: 120px 0;

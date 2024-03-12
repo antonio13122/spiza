@@ -1,19 +1,29 @@
-import Vuex from 'vuex';
+import { createStore } from 'vuex';
 
-export default new Vuex.Store({
-    state: {
-      cartItems: [],
-      total:0, // Array to store cart items
+export default createStore({
+  state: {
+    cartItems: [],
+    total: 0,
+  },
+  mutations: {
+    addToCart(state, product) {
+      state.cartItems.push({
+        title: product.title,
+        imageUrl: product.imageUrl,
+        price: product.price,
+        quantity : 1
+      });
     },
-    mutations: {
-      addToCart(state, product) {
-        state.cartItems.push(product); // Add product to cart
-      },
+    removeFromCart(state, index) {
+      state.cartItems.splice(index, 1); // Remove item from cartItems array at given index
+    }
+  },
+  actions: {
+    addToCart({ commit }, product) {
+      commit('addToCart', product);
     },
-    actions: {
-      addToCart({ commit }, product) {
-        commit('addToCart', product); // Commit mutation to add product to cart
-      },
-    },
-  });
-  
+    removeFromCart({ commit }, index) {
+      commit('removeFromCart', index);
+    }
+  }
+});

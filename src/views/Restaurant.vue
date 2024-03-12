@@ -24,7 +24,7 @@ import { storage } from '@/firebase';
 import Product from '@/components/Product.vue';
 
 export default {
-  name: 'Restauraunt',
+  name: 'Restaurant',
   components: {
     Product,
   },
