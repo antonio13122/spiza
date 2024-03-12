@@ -35,7 +35,8 @@
   
 </p>
 
-![screenshot](https://bs.uenicdn.com/blog/wp-content/uploads/2018/04/giphy.gif)
+![screenshot](https://gifyu.com/image/SUc0s)
+![screenshot](https://gifyu.com/image/SUc0x)
 ## Project from Software engineering course
 [Faculty of Computer Science in Pula](#link)  
 Course: [Software Engineering](#link)  
