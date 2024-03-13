@@ -124,7 +124,7 @@ $ git clone https://github.com/antonio13122/spiza
 Prototype made in Figma ( to be added )
 [![Figma Badge](https://img.shields.io/badge/Figma-Prototype-1c73b7?logo=figma&style=flat-square)](#) [Figma web app prototype](https://www.figma.com/file/8By6YhRcAxwvGsVTrBUSrC/Untitled?type=design&node-id=4-1012&mode=design)
 
-Use Case Diagram:
+Use Case Diagram: [usecase(https://lucid.app/lucidchart/e754eac9-9d82-4306-9014-c2732d4ff010/edit?viewport_loc=-1876%2C-1430%2C5120%2C2612%2C0_0&invitationId=inv_13cb7788-0895-4518-a279-7382d465a7f2)]
 
 
 Uml Class Diagram:
