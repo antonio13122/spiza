@@ -16,7 +16,18 @@ export default createStore({
     },
     removeFromCart(state, index) {
       state.cartItems.splice(index, 1); // Remove item from cartItems array at given index
+    },
+    setCartItems(state,cartItems){
+      state.cartItems=cartItems;
     }
+  },
+  getters: {
+cartItems(state){
+  return state.cartItems;
+},
+total(state){
+  return state.total;
+},
   },
   actions: {
     addToCart({ commit }, product) {

@@ -89,8 +89,13 @@ const routes = [
   {
     path: '/Checkout',
     name: 'Checkout',
-    component: Checkout
-  },
+    component: Checkout,
+    props: route => ({
+      cartItems: route.params.cartItems,
+      total: route.params.total
+    
+  }),
+}
 ];
 
 const router = createRouter({

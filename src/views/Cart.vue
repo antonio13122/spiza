@@ -1,7 +1,6 @@
 <template>
 
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container-fluid">
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
@@ -21,14 +20,20 @@
                       </td>
                       <td class="desc">
                         <h3>
-                          <a href="#" class="text-navy">{{ item.title }}</a>
+                          <a v-bind:href="item.title" class="text-navy"></a>
                         </h3>
                         <div class="m-t-sm">
                           |
                           <a href="#" class="text-muted" @click="removeItem(index)"><i class="fa fa-trash"></i> Remove item</a>
                         </div>
+                                              <h5>How much are you willing to pay?</h5>
+
                       </td>
-                      <td>{{ item.price }}</td>
+                      
+                      <td>
+                        <input type="text" class="form-control" v-model="item.price" >  <!-- make the same in Checkout.vue-->
+
+                      </td>
                       <td width="65">
                         <input type="text" class="form-control" v-model="item.quantity" placeholder="1">
                       </td>
@@ -37,6 +42,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        <p> type="text" class="form-control" v-model="item.quantity </p>
                     </div>
                     <div class="row mt-4"> <!-- Add a margin-top for spacing -->
                 <div class="col-md-12 text-right"> <!-- Align total price to the right -->
@@ -44,10 +50,11 @@
                 </div>
             </div>
             
-            <div class="ibox-content">
-    <router-link to="/Checkout" class="btn btn-primary pull-right"><i class="fa fa-shopping-cart"></i> Checkout</router-link>
+            <div class="ibox-content" style="display: flex; justify-content: space-between;">
     <router-link to="/Food" class="btn btn-white"><i class="fa fa-arrow-left"></i> Continue shopping</router-link>
+    <router-link to="/Checkout" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Checkout</router-link>
 </div>
+
 
                 </div>
             </div>
@@ -56,16 +63,15 @@
 </div>
 </template>
 
-
 <script>
 import { db } from '@/firebase'; 
 import Product from '@/components/Product.vue';
 import { storage } from '@/firebase'; 
-import { mapState,mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   computed: {
-    ...mapState(['cartItems']),
+    ...mapState(['cartItems','total']),
     total() {
       return this.cartItems.reduce((total, item) => total + (item.price * parseFloat(item.quantity || 0)), 0);
     }
@@ -74,13 +80,20 @@ export default {
     ...mapActions(['addToCart', 'removeFromCart']), // Ensure 'removeFromCart' is included here
     removeItem(index) {
       this.removeFromCart(index);
+    },
+    goToCheckout() { // Define goToCheckout method within methods object
+      const { cartItems, total } = this;
+      this.$router.push({ 
+        name: 'Checkout', 
+        query: { 
+          cartItems: JSON.stringify(cartItems), 
+          total 
+        } 
+      });
     }
   }
 };
 </script>
- 
-
-
 
 <style scoped>
 
