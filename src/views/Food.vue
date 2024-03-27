@@ -11,12 +11,21 @@
       </router-link>
     </div>
     <div class="container">
-  <input placeholder='Search...' class='js-search' type="text">
-  <i class="fa fa-search"></i>
-</div>
+    <div class="search-container">
+      <input placeholder='Search...' class='js-search' type="text" @keyup.enter="search">
+      <img src="@/assets/search-icon.png" alt="Search Icon" class="search-icon">
+    </div>
+  </div>
   
 
   </template>
+  <script>
+  export default {
+    setup() {
+      
+    },
+  }
+  </script>
   
   <style lang="scss" scoped>
   
@@ -41,9 +50,8 @@ body{
 }
 
 input[type=text]{
-  position: relative;
   padding: 15px 40px 15px 20px;
-  width: 20px;
+  width: 300px;
   color: #525252;
   text-transform: uppercase;
   font-size: 16px;
@@ -52,11 +60,20 @@ input[type=text]{
   border: none;
   border-radius: 5px;
   background: linear-gradient(to right, #FFFFFF 0%,#464747 #F9F9F9 100%);
-  transition: width 0.4s ease;
   outline: none;
   
   &:focus{ width: 300px; }
 }
+.search-icon {
+  position: absolute;
+  left: 320px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.search-container {
+  position: relative;
+}
+
 
 i{
   position: relative;

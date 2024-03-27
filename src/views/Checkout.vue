@@ -16,7 +16,7 @@
                           <a href="#" class="text-muted" @click="removeItem(index)"><i class="fa fa-trash"></i> Remove item</a>
                         </div>
                       </td>
-                      <td>{{ item.price }}</td>
+                      
                       <td width="65">
                         <input type="text" class="form-control" v-model="item.quantity" placeholder="1">
                       </td>
@@ -24,23 +24,53 @@
                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-  </template>
-  
+                          </div>
+    <button v-if="cartNotEmpty" class="btn btn-primary" @click="showPaymentPopup">Proceed to Payment</button>
+    <Final v-if="showPayment" @close="hidePaymentPopup" @payment-success="handlePaymentSuccess" />
+    <!-- Display "Thanks for your payment!" message -->
+    <div v-if="paymentSuccessful" class="payment-success-message">
+      Thanks for your payment!
+    </div>
+  </div>
+</template>
   <script>
   import { mapGetters } from 'vuex';
+  import Final from '@/components/Final.vue';
   
   export default {
-    computed: {
-      ...mapGetters(['cartItems', 'total'])
+    components:{
+      Final
     },
-    methods: {
-      processPayment() {
-        // Implement payment process here
+    data(){
+      return{
+        showPayment: false,
+        paymentSuccesful:false
+      };
+    },
+    computed: {
+      ...mapGetters(['cartItems', 'total']),
+      cartNotEmpty() {
+      return this.cartItems.length > 0;
       }
+    },
+     methods: {
+    showPaymentPopup() {
+      this.showPayment = true; // Show payment popup when button is clicked
+    },
+    hidePaymentPopup() {
+      this.showPayment = false; // Hide payment popup
+    },
+    handlePaymentSuccess() {
+      // Logic to handle successful payment
+      console.log('Payment successful!');
+      this.paymentSuccessful = true;
+      this.hidePaymentPopup();
+    },
+    removeItem(index) {
+      // Implement remove item logic
     }
   }
+};
   </script>
   
   <style scoped>
@@ -65,6 +95,11 @@ h3 {
 .cart-product-img {
   width: 80px;
   height: auto;
+}
+.payment-success-message {
+  text-align: center;
+  margin-top: 20px;
+  color: green; 
 }
 .product-imitation.xl {
   padding: 120px 0;

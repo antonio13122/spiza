@@ -6,6 +6,7 @@ import Bakery from '../views/Bakery.vue';
 import Market from '../views/Market.vue';
 import Recipes from '../views/Recipes.vue';
 import Admin from '../views/Admin.vue'; 
+
 import addAdmin from '../views/addAdmin.vue';
 import removeAdmin from '../views/removeAdmin.vue'
 import Checkout from '../views/Checkout.vue'; 
@@ -56,6 +57,7 @@ const routes = [
     name: 'Restaurant',
     component: Restaurant
   },
+ 
   {
     path: '/Bakery',
     name: 'Bakery',
