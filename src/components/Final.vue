@@ -37,11 +37,8 @@
     },
     methods: {
       processPayment() {
-        // You can implement payment processing logic here
-        // For example, make an API call to process the payment
+        
         console.log('Payment processed successfully!');
-        // After successful payment, you may want to close the popup
-        // You can emit an event to the parent component to handle this
         this.$emit('payment-success');
       }
     }

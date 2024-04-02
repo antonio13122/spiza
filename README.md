@@ -127,7 +127,7 @@ Prototype made in Figma ( to be added )
 Use Case Diagram: [usecase(https://lucid.app/lucidchart/e754eac9-9d82-4306-9014-c2732d4ff010/edit?viewport_loc=-1876%2C-1430%2C5120%2C2612%2C0_0&invitationId=inv_13cb7788-0895-4518-a279-7382d465a7f2)]
 
 
-Uml Class Diagram:[umlclass (https://lucid.app/lucidchart/92cdc692-f6f7-42c3-8852-8de9a3278812/edit?viewport_loc=-444%2C689%2C4490%2C2886%2C0_0&invitationId=inv_1164b57a-b927-47d6-89d7-48f7630aec50)]
+Uml Class Diagram: [umlclass (https://lucid.app/lucidchart/92cdc692-f6f7-42c3-8852-8de9a3278812/edit?viewport_loc=-444%2C689%2C4490%2C2886%2C0_0&invitationId=inv_1164b57a-b927-47d6-89d7-48f7630aec50)]
 
 
 
@@ -145,6 +145,7 @@ This software uses the following open source packages:
 
 
 ## Video
+[Youtube](https://youtu.be/7wLUMVTsi_Q)
 
 
 
